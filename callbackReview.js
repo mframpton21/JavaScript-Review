@@ -1,6 +1,10 @@
-/* Declare and Define the functions here that will make the function calls below work properly */
+// Declare and Define the functions here that will make the function 
+// calls below work properly
 
-
+// PROBLEM 1
+var first = function(array, callback) {
+  return callback(array[0]);
+};
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
@@ -9,11 +13,10 @@ first(names, function(firstName){
 
 
 
-
-/* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
-
-
-
+// PROBLEM 2 - NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM
+var last = function(array, callback) {
+  return callback(array[array.length - 1])
+};
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 last(names, function(lastName){
@@ -22,15 +25,16 @@ last(names, function(lastName){
 
 
 
-
-/* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
-
-//have the contains function return a boolean value for if the name is in the array or not.
-
+// PROBLEM 3 - NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM
+// Have the contains function return a boolean value for if the name 
+// is in the array or not.
+var contains = function(toFind, array, callback) {
+  return callback(array.indexOf(toFind) !== -1);
+};
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 contains('Colt', names, function(yes){
-  if(yes){
+  if (yes) {
     console.log('Colt is in the array');
   } else {
     console.log('Colt is not in the list');
@@ -39,25 +43,34 @@ contains('Colt', names, function(yes){
 
 
 
-
-/* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
-
-
-
-
+// PROBLEM 4 - NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM
 var numbers = [1,2,3,4,5];
-//Produces a new array of values by mapping each value in list through a transformation function
-map(numbers, function(num){
+// Produces a new array of values by mapping each value in list through a 
+// transformation function
+var map = function(array, callback) {
+  var newArray = [];
+  for (var i = 0; i < array.length; i++) {
+    newArray.push(callback(array[i]));
+  }
+  return newArray;
+};
+
+console.log(map(numbers, function(num){
   return num * 2; //returns an array of [2,4,6,8,10]
-});
+}));
 
 
 
-
-/* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
-
-
-
+// PROBLEM 5 - NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM
+var uniq = function(array, callback) {
+  var newArray = [];
+  for (var i = 0; i < array.length; i++) {
+    if (newArray.indexOf(array[i]) === -1) {
+      newArray.push(array[i]);
+    }
+  }
+  return callback(newArray);
+};
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 uniq(names, function(uniqArr){
@@ -66,11 +79,13 @@ uniq(names, function(uniqArr){
 
 
 
-
-/* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
-
-
-
+// PROBLEM 6 - NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM
+var each = function(array, callback) {
+    for (var i = 0; i < array.length; i++) {
+      callback(array[i], i);
+    }
+    return;
+};
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 each(names, function(item, indice){
@@ -79,11 +94,14 @@ each(names, function(item, indice){
 
 
 
-
-/* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
-
-
-
+// PROBLEM 7 - NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM
+var getUserById = function(id, array, callback) {
+  for (var i = 0; i < array.length; i++) {
+    if (array[i].id === id) {
+      callback(array[i])
+    }
+  }
+};
 
 var users = [
   {
@@ -106,19 +124,25 @@ var users = [
   },
 ];
 getUserById('16t', users, function(user){
-  console.log('The user with the id 16t has the email of ' + user.email + 'the name of ' + user.name + ' and the address of ' + user.address); 
+  console.log('The user with the id 16t has the email of ' + user.email + 
+    'the name of ' + user.name + ' and the address of ' + user.address); 
 });
 
 
 
+// PROBLEM 8 - NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM
+var find = function(array, callback) {
+  for (var i = 0; i < array.length; i++) {
+    if (callback(array[i])) {
+      return array[i];
+    }
+  }
+};
 
-/* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
-
-
-
-
-//Looks through each value in the list, returning the first one that passes a truth test 
+// Looks through each value in the list, returning the first one that passes 
+// a truth test 
 var numbers  = [1, 2, 3, 4, 5, 6];
-find(numbers, function(num){ 
+console.log(find(numbers, function(num){ 
   return num % 2 == 0; //should return 2
-})
+}));
+

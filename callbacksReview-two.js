@@ -33,16 +33,27 @@ var songs =
     {"wrapperType":"track", "kind":"song", "artistId":351794, "collectionId":22175273, "trackId":22175366, "artistName":"Nelly", "collectionName":"Suit", "trackName":"My Place", "collectionCensoredName":"Suit", "trackCensoredName":"My Place", "artistViewUrl":"https://itunes.apple.com/us/artist/nelly/id351794?uo=4", "collectionViewUrl":"https://itunes.apple.com/us/album/my-place/id22175273?i=22175366&uo=4", "trackViewUrl":"https://itunes.apple.com/us/album/my-place/id22175273?i=22175366&uo=4", "previewUrl":"http://a872.phobos.apple.com/us/r1000/081/Music/b6/25/42/mzm.ktyqjaan.aac.p.m4a", "artworkUrl30":"http://a4.mzstatic.com/us/r30/Music/y2004/m09/d03/h17/s05.bhnezfck.30x30-50.jpg", "artworkUrl60":"http://a1.mzstatic.com/us/r30/Music/y2004/m09/d03/h17/s05.bhnezfck.60x60-50.jpg", "artworkUrl100":"http://a3.mzstatic.com/us/r30/Music/y2004/m09/d03/h17/s05.bhnezfck.100x100-75.jpg", "collectionPrice":9.99, "trackPrice":1.29, "releaseDate":"2004-09-13T07:00:00Z", "collectionExplicitness":"explicit", "trackExplicitness":"explicit", "discCount":1, "discNumber":1, "trackCount":11, "trackNumber":3, "trackTimeMillis":336507, "country":"USA", "currency":"USD", "contentAdvisoryRating":"Explicit", "radioStationUrl":"https://itunes.apple.com/station/idra.22175366"}
   ];
 
+// Above you have a large Array of Song Objects. 
+// Write a 'getter' function that returns the songs array.
+// Code here
+var getter = function() {
+    return songs;
+};
 
-//Above you have a large Array of Song Objects. 
-//Write a 'getter' function that returns the songs array.
+var newSong = {"wrapperType":"track", "kind":"song", "artistId":999999999, "collectionId":351823, "trackId":351792, "artistName":"Nelly", "collectionName":"Nellyville", "trackName":"Hot in Herre", "collectionCensoredName":"Nellyville", "trackCensoredName":"Hot in Herre", "artistViewUrl":"https://itunes.apple.com/us/artist/nelly/id351794?uo=4", "collectionViewUrl":"https://itunes.apple.com/us/album/hot-in-herre/id351823?i=351792&uo=4", "trackViewUrl":"https://itunes.apple.com/us/album/hot-in-herre/id351823?i=351792&uo=4", "previewUrl":"http://a937.phobos.apple.com/us/r1000/055/Music/v4/75/c4/b5/75c4b5b7-8d86-8a7d-4b55-7d1eb706f21c/mzaf_377839435088029530.plus.aac.p.m4a", "artworkUrl30":"http://a2.mzstatic.com/us/r30/Features6/v4/98/07/77/98077786-5f86-0eda-5a43-c6cc24e9fb7a/dj.pjwyellx.30x30-50.jpg", "artworkUrl60":"http://a4.mzstatic.com/us/r30/Features6/v4/98/07/77/98077786-5f86-0eda-5a43-c6cc24e9fb7a/dj.pjwyellx.60x60-50.jpg", "artworkUrl100":"http://a3.mzstatic.com/us/r30/Features6/v4/98/07/77/98077786-5f86-0eda-5a43-c6cc24e9fb7a/dj.pjwyellx.100x100-75.jpg", "collectionPrice":7.99, "trackPrice":1.29, "releaseDate":"2002-06-25T07:00:00Z", "collectionExplicitness":"cleaned", "trackExplicitness":"cleaned", "discCount":1, "discNumber":1, "trackCount":15, "trackNumber":2, "trackTimeMillis":228333, "country":"USA", "currency":"USD", "contentAdvisoryRating":"Clean", "radioStationUrl":"https://itunes.apple.com/station/idra.351792"};
 
-  //code here
+// Now write a setter that takes in two paramaters.
+// The first parameter is a song object and the second parameter is 
+// a callback (which will be a placeholder for your getter function)
+// Inside your setter function first add the first parameter, or the 
+// song object, to the end of your songs array. Once you do that, 
+// call your callback (getter) function which should get the songs and 
+// return them.
+// Code here
+var setter = function(obj, callback) {
+    songs.push(obj);
+    return callback();
+};
 
-
-//Now write a setter that takes in two paramaters.
-//The first parameter is a song object and the second parameter is a callback (which will be a placeholder for your getter function)
-//Inside your setter function first add the first parameter, or the song object, to the end of your songs array.
-//Once you do that, call your callback (getter) function which should get the songs and return them.
-  
-  //code here
+var result = setter(newSong, getter);
+console.log(result);
